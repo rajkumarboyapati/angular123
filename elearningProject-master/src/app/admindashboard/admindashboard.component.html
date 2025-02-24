@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard with Sidebar</title>
+</head>
+<body>
+
+    <!-- Main Content -->
+    <div class="content" style="margin-left: 250px; padding: 20px;">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Manage buttons in the navbar -->
+                    <li class="nav-item">
+                        <button class="btn btn-info text-white ml-5"  (click)="viewEmployee(employees)">View Employee</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-info text-white ml-5"  (click)="viewManager()">View Manager</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-info text-white ml-5"  (click)="viewInstructor()">View Instructor</button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-primary ml-5">Logout</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <h2>Dashboard Content</h2>
+        <p>Welcome to the Admin Dashboard. You can manage employees, managers, and instructors from the top navbar.</p>
+
+        <!-- Employee Table -->
+        <div class="container" id="section" *ngIf="showEmployeeTable">
+            <table class="table table-hover">
+                <tr>
+                    <th>Employee Id</th>
+                    <th>Employee Name</th>
+                    <th>Employee Contact</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+                <tr *ngFor="let e of employees">
+                 
+                    <td>{{e.employeeId}}</td>
+                    <td>{{e.employeeName}}</td>
+                    <td>{{e.employeeContact}}</td>
+                    <td><button type="button" class="btn btn-success bg-success" (click)="viewModelForm(e)">View</button></td>
+                    <td><button type="button" class="btn btn-primary bg-primary">Delete</button></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Manager Table -->
+        <div class="container" id="section" *ngIf="showManagerTable">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Manager Id</th>
+                    <th>Manager Name</th>
+                    <th>Manager Contact</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+                <tr *ngFor="let manager of manager">
+                    <td>{{ manager.managerId }}</td>
+                    <td>{{ manager.managername }}</td>
+                    <td>{{ manager.managerContact }}</td>
+                    <td><button type="button" class="btn btn-success bg-success" (click)="viewModelForm(manager)">View</button></td>
+                    <td><button type="button" class="btn btn-primary bg-primary">Delete</button></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Instructor Table -->
+        <div class="container" id="section" *ngIf="showInstructorTable">
+            <table class="table table-hover">
+                <tr>
+                    <th>Instructor Id</th>
+                    <th>Instructor Name</th>
+                    <th>Instructor Contact</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+                <tr *ngFor="let instructor of Instructors">
+                    <td>{{ instructor.instructorId }}</td>
+                    <td>{{ instructor.instructorName }}</td>
+                    <td>{{ instructor.instructorContact }}</td>
+                    <td><button type="button" class="btn btn-success bg-success" (click)="viewModelForm(instructor)">View</button></td>
+                    <td><button type="button" class="btn btn-primary bg-primary">Delete</button></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>

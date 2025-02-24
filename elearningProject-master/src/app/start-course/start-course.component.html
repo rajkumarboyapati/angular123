@@ -1,0 +1,37 @@
+<div class="container mt-4">
+    <!-- Loop through each module in the course -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card mb-4" *ngFor="let module of course.moduleList">
+          
+          <!-- Display module name and content -->
+          <div class="card-body">
+            <h5 class="card-title">{{ module.moduleName }}</h5>
+            <p class="card-text">{{ module.moduleContent }}</p>
+            <p class="card-text"><strong>Material:</strong> {{ module.materialName }} ({{ module.materialType }})</p>
+            
+            <!-- Display video content if available -->
+            <div *ngIf="module.vedioRef?.length > 0">
+              <h6>Video: {{ module.vedioRef[0].vedioName }}</h6>
+              <video *ngIf="module.vedioRef[0]?.contentName" width="100%" controls>
+                <source [src]="module.vedioRef[0].contentName" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+  
+            <!-- Start Quiz Button -->
+             <p>{{module.quizRef.quizId}}</p>
+            <button 
+              *ngIf="module.quizRef?.quizId"  
+              class="btn btn-primary mt-3" 
+              (click)="startQuiz(module.quizRef.quizId)">
+              Start Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  

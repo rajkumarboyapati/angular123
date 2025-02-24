@@ -1,0 +1,124 @@
+<div class="dashboard-container">
+
+  <!-- Right-side Navbar -->
+  <div class="right-sidebar">
+    <h3>Navigation</h3>
+    <ul>
+      <li><button class="btn btn-success" (click)="addCourse()">Add Course</button></li>
+      <li>
+        <button class="btn btn-primary" (click)="toggleReports(); getReportsByInstructorId()">Reports</button>
+      </li>
+      <li><button class="btn btn-primary" (click)=" toggleSupport(); getInstructorBYusrId()">Support</button></li>
+      <li><button class="btn btn-danger">Logout</button></li>
+      <li>
+        <button class="btn btn-primary" (click)="toggleCourses(); getCoursesByInstructorName()">Show Added Courses</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <h2>Welcome to the Dashboard</h2>
+    <p>Select an option from the right-side menu or explore courses below.</p>
+
+    <!-- Course Section -->
+    <h3>Courses</h3>
+    <div *ngIf="showCourses">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Duration</th>
+            <th>Category</th>
+            <th>Instructor</th>
+            <th>Modules</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of course">
+            <td>{{ course.courseId }}</td>
+            <td>{{ course.courseName }}</td>
+            <td>{{ course.courseDuration }} hrs</td>
+            <td>{{ course.category?.categoryName }}</td>
+            <td>{{ course.instructorRef[0]?.instructorName }}</td>
+            <td>
+              <ul>
+                <li *ngFor="let module of course.moduleList">
+                  {{ module.moduleName }} - {{ module.moduleContent }}
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="!showCourses" class="empty-state">
+      <p>No courses available. Click "Add Course" to create a new course!</p>
+    </div>
+
+    <!-- Reports Section -->
+    <h3>Reports</h3>
+    <div *ngIf="showReports">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Report ID</th>
+            <th>Employee Name</th>
+            <th>Course Name</th>
+            <th>Progress</th>
+            <th>Quiz Score</th>
+            <th>Quiz Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let report of reports">
+            <td>{{ report.reportId }}</td>
+            <td>{{ report.employeeRef?.employeeName }}</td>
+            <td>{{ report.courseRef?.courseName }}</td>
+            <td>{{ report.progress }}%</td>
+            <td>{{ report.quizScore }}</td>
+            <td>{{ report.courseRef?.moduleList[0]?.quizRef?.quizName }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="!showReports" class="empty-state">
+      <p>No reports available. Click "Reports" to load the data!</p>
+    </div>
+    <!-- Support Section -->
+    <h3>Support</h3>
+    <div *ngIf="showSupport">
+      <form (ngSubmit)="addSupport()" #supportForm="ngForm">
+        <div class="form-group">
+          <label for="supportName">Support Name:</label>
+          <input type="text" id="supportName" class="form-control" [(ngModel)]="support.supportName" name="supportName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="supportType">Support Type:</label>
+          <input type="text" id="supportType" class="form-control" [(ngModel)]="support.supportType" name="supportType" required>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Status:</label>
+          <input type="text" id="status" class="form-control" [(ngModel)]="support.status" name="status" required>
+        </div>
+
+        <div class="form-group">
+          <label for="issue">Issue:</label>
+          <textarea id="issue" class="form-control" [(ngModel)]="support.issue" name="issue" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit Support Request</button>
+      </form>
+    </div>
+
+    <div *ngIf="!showSupport" class="empty-state">
+      <p>Need help? Click "Support" to submit an issue!</p>
+    </div>
+  </div>
+  
+</div>

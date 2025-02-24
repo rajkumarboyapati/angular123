@@ -1,0 +1,105 @@
+
+<section class="container">
+    <!-- Jumbotron -->
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 90%);margin-top: 150px;">
+      <div class="container">
+        <div class="row gx-lg-5 align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <h1 class="my-5 display-3 fw-bold ls-tight">
+              The best offer <br />
+              <span class="text-primary">for your business</span>
+            </h1>
+            <p style="color: hsl(217, 10%, 50.8%)">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Eveniet, itaque accusantium odio, soluta, corrupti aliquam
+              quibusdam tempora at cupiditate quis eum maiores libero
+              veritatis? Dicta facilis sint aliquid ipsum atque?
+            </p>
+          </div>
+
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="card">
+              <div class="card-body py-5 px-md-5">
+                <form [formGroup]="registrationForm" (ngSubmit)="send()">
+                  <!-- 2 column grid layout with text inputs for the first and last names -->
+
+
+                      <div data-mdb-input-init class="form-outline">
+                        <label class="form-label" for="form3Example1" style="margin-top: 12px">Name<sup style="color: red;">*</sup></label>
+                        <input  id="form3Example1" class="form-control" type="text"  formControlName="employeename"/>
+                        <div *ngIf="registrationForm.controls['employeename'].hasError('required') && registrationForm.controls['employeename'].touched" class="font-weight-bold">
+                            <sup style="color: rgb(223, 47, 47);">name is required</sup> 
+                        </div>
+                        <div *ngIf="registrationForm.controls['employeename'].hasError('pattern') && registrationForm.controls['employeename'].touched" class="font-weight-bold">
+                            <sup style="color: rgb(223, 47, 47);">Name doesnot Conatain numbers</sup> 
+                        </div>
+                      </div>
+
+                      <label class="form-label" for="form3Example2" style="margin-top: 12px">Contact<sup style="color: red;">*</sup></label>
+                      <div data-mdb-input-init class="form-outline">
+                        <input type="text" id="form3Example2" class="form-control" formControlName="employeecontact"/>
+                        <div *ngIf="registrationForm.controls['employeecontact'].hasError('required') && registrationForm.controls['employeecontact'].touched" class="font-weight-bold">
+                            <sup style="color: rgb(223, 47, 47);">contact number is required</sup> 
+                        </div>
+                        <div *ngIf="registrationForm.controls['employeecontact'].hasError('pattern') && registrationForm.controls['employeecontact'].touched" class="font-weight-bold">
+                            <sup style="color: rgb(233, 41, 41);">invalid contact number</sup> 
+                        </div>
+                    </div>
+
+                  <!-- Email input -->
+                  <div data-mdb-input-init class="form-outline mb-3">
+                    <label class="form-label" for="form3Example3" style="margin-top: 12px">Email address<sup style="color: red;">*</sup></label>
+                    <input type="email" id="form3Example3" class="form-control" formControlName="email" />
+                    <div *ngIf="registrationForm.controls['email'].hasError('required') && registrationForm.controls['email'].touched" class="font-weight-bold">
+                        <sup style="color: rgb(233, 41, 41);">Email is required</sup> 
+                    </div>
+                    <div *ngIf="registrationForm.controls['email'].hasError('email') && registrationForm.controls['email'].touched" class="font-weight-bold">
+                        <sup style="color: rgb(233, 41, 41);">Inavalid Email</sup> 
+                    </div>
+                    
+                  </div>
+
+                  <!-- Password input -->
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="form3Example4" style="margin-top: 3px">Password<sup style="color: red;">*</sup></label>
+                    <input type="password" id="form3Example4" class="form-control" formControlName="password"/>
+                    <div *ngIf="registrationForm.controls['password'].hasError('required') && registrationForm.controls['password'].touched" class="font-weight-bold">
+                        <sup style="color: rgb(233, 41, 41);">Password Required</sup> 
+                    </div>
+                    <div *ngIf="registrationForm.controls['password'].hasError('pattern') && registrationForm.controls['password'].touched" class="font-weight-bold">
+                        <sup style="color: rgb(233, 41, 41);">Password  Must Conatain atleast one capital & one Special Symbol & one Number</sup> 
+                    </div>
+                  </div>
+                  <div class="control">
+                    <label for="role">Role<sup style="color: red;">*</sup></label>
+                    <label id="role" class="radio" style="margin-left: 10px;">
+                      <input type="radio" formControlName="role" value="Employee" />
+                      Employee
+                    </label>
+                    <label class="radio" style="margin-left: 10px;">
+                      <input type="radio" formControlName="role" value="Instructor" />
+                      Instructor
+                    </label>
+                    <label class="radio" style="margin-left: 10px;">
+                      <input type="radio" formControlName="role" value="Manager" />
+                      Manager
+                    </label>
+                  </div>
+
+                  <!-- Submit button -->
+                  <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4" [disabled]="registrationForm.invalid">
+                    Sign up
+                  </button>
+
+
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->

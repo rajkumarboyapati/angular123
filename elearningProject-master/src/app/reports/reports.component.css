@@ -1,0 +1,18 @@
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .card-subtitle {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+  }
+  
+  .progress-bar {
+    height: 25px;
+  }
+  

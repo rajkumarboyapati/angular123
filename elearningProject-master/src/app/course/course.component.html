@@ -1,0 +1,349 @@
+<form #courseForm="ngForm" (ngSubmit)="submitCourse(courseForm)" class="container mt-5">
+    <!-- Course Name -->
+    <label for="courseName" class="form-label">Course Name</label>
+    <input 
+    id="courseName" 
+    name="courseName" 
+    [(ngModel)]="course1.courseName" 
+    class="form-control" 
+    required 
+    minlength="5" 
+    pattern="^[A-Za-z][A-Za-z0-9!@#$%^&*()_+\-=\[\]{};':\\|,.<>\/?\s]*$" 
+    #courseName="ngModel" 
+  />
+  
+  <!-- Validation Messages -->
+  <div *ngIf="courseName.invalid && courseName.touched" class="text-danger">
+    <small *ngIf="courseName.errors?.['required']">Course name is required.</small>
+    <small *ngIf="courseName.errors?.['minlength']">Course name must be at least 5 characters long.</small>
+    <small *ngIf="courseName.errors?.['pattern']">Course name must start with a letter and can contain letters, numbers, spaces, and special characters.</small>
+  </div>
+  
+
+
+    
+<div class="mb-3">
+    <label for="courseDuration" class="form-label">Course Duration</label>
+    <input 
+      id="courseDuration" 
+      name="courseDuration" 
+      [(ngModel)]="course1.courseDuration" 
+      class="form-control" 
+      required 
+      type="number" 
+      min="1" 
+      #courseDuration="ngModel"
+    />
+
+    <!-- Validation Messages -->
+    <div *ngIf="courseDuration.invalid && courseDuration.touched" class="text-danger">
+      <small *ngIf="courseDuration.errors?.['required']">Course duration is required.</small>
+      <small *ngIf="courseDuration.errors?.['min']">Course duration must be greater than zero.</small>
+    </div>
+</div>
+
+ 
+    <!-- Instructor Section -->
+    <!-- <div class="mb-4">
+        <h3 class="mb-3">Instructors</h3>
+        <div *ngFor="let instructor of course1.instructorRef; let i = index" class="border p-3 mb-3 rounded">
+            <label for="instructorName{{ i }}" class="form-label">Instructor Name</label>
+            <input id="instructorName{{ i }}" name="instructorName{{ i }}" [(ngModel)]="instructor.instructorName" class="form-control" />
+            
+            <label for="instructorContact{{ i }}" class="form-label">Instructor Contact</label>
+            <input id="instructorContact{{ i }}" name="instructorContact{{ i }}" [(ngModel)]="instructor.instructorContact" class="form-control" />
+            
+            <button type="button" class="btn btn-danger mt-2" (click)="removeInstructor(i)">Remove Instructor</button>
+        </div>
+        <button type="button" class="btn btn-success" (click)="addInstructor()">Add Instructor</button>
+    </div> -->
+ 
+    <!-- Module Section -->
+    <div class="mb-4">
+        <h3 class="mb-3">Modules</h3>
+        <div *ngFor="let module of course1.moduleList; let i = index" class="border p-3 mb-3 rounded">
+            <label for="moduleName{{ i }}" class="form-label">Module Name</label>
+<input 
+  id="moduleName{{ i }}" 
+  name="moduleName{{ i }}" 
+  [(ngModel)]="module.moduleName" 
+  class="form-control" 
+  required 
+  minlength="5"
+  pattern="^[A-Za-z][A-Za-z0-9!@#$%^&*()_+\-=\[\]{};':\\|,.<>\/?\s]*$"  
+  #moduleName="ngModel"
+/>
+
+<!-- Validation Messages -->
+<div *ngIf="moduleName.invalid && moduleName.touched" class="text-danger">
+  <small *ngIf="moduleName.errors?.['required']">Module name is required.</small>
+  <small *ngIf="moduleName.errors?.['minlength']">Module name must be at least 5 characters long.</small>
+  <small *ngIf="moduleName.errors?.['pattern']">Module name must start with a letter and can contain numbers and special characters.</small>
+</div>
+
+            
+            <label for="moduleContent{{ i }}" class="form-label">Module Content</label>
+            <textarea id="moduleContent{{ i }}" name="moduleContent{{ i }}" [(ngModel)]="module.moduleContent" class="form-control" ></textarea>
+            <div class="mb-3">
+              <label class="form-label">Material File</label>
+              <input type="file" class="form-control" (change)="handleMaterialFile($event, i)" />
+            </div>
+            <!-- Quiz Section -->
+            <div class="mt-3">
+                <h4 class="mb-3">Quiz</h4>
+                <label for="quizName{{ i }}" class="form-label">Quiz Name</label>
+<input 
+  id="quizName{{ i }}" 
+  name="quizName{{ i }}" 
+  [(ngModel)]="module.quizRef.quizName" 
+  class="form-control" 
+  required 
+  minlength="5"
+  pattern="^[A-Za-z][A-Za-z0-9!@#$%^&*()_+\-=\[\]{};':\\|,.<>\/?\s]*$"   
+  #quizName="ngModel"
+/>
+
+<!-- Validation Messages -->
+<div *ngIf="quizName.invalid && quizName.touched" class="text-danger">
+  <small *ngIf="quizName.errors?.['required']">Quiz name is required.</small>
+  <small *ngIf="quizName.errors?.['minlength']">Quiz name must be at least 5 characters long.</small>
+  <small *ngIf="quizName.errors?.['pattern']">Quiz name must start with a letter and can contain numbers and special characters.</small>
+</div>
+
+                <div *ngFor="let question of module.quizRef.questionsList; let j = index" class="mt-2">
+                    <label for="questionName{{ i }}-{{ j }}" class="form-label">Question Name</label>
+<input 
+  id="questionName{{ i }}-{{ j }}" 
+  name="questionName{{ i }}-{{ j }}" 
+  [(ngModel)]="question.questionName" 
+  class="form-control" 
+  required 
+  #questionName="ngModel"
+/>
+
+<!-- Validation Message -->
+<div *ngIf="questionName.invalid && questionName.touched" class="text-danger">
+  <small *ngIf="questionName.errors?.['required']">Question name is required.</small>
+</div>
+
+<label for="option1{{ i }}-{{ j }}" class="form-label">Option 1</label>
+<input 
+  id="option1{{ i }}-{{ j }}" 
+  name="option1{{ i }}-{{ j }}" 
+  [(ngModel)]="question.option1" 
+  class="form-control" 
+  required 
+  #option1="ngModel"
+/>
+
+<!-- Validation Message -->
+<div *ngIf="option1.invalid && option1.touched" class="text-danger">
+  <small *ngIf="option1.errors?.['required']">Option 1 is required.</small>
+</div>
+
+                    
+
+<label for="option2{{ i }}-{{ j }}" class="form-label">Option 2</label>
+<input 
+  id="option2{{ i }}-{{ j }}" 
+  name="option2{{ i }}-{{ j }}" 
+  [(ngModel)]="question.option2" 
+  class="form-control" 
+  required 
+  #option2="ngModel"
+/>
+
+<!-- Validation Message -->
+<div *ngIf="option2.invalid && option2.touched" class="text-danger">
+  <small *ngIf="option2.errors?.['required']">Option 2 is required.</small>
+</div>
+
+
+<label for="option3{{ i }}-{{ j }}" class="form-label">Option 3</label>
+<input 
+  id="option3{{ i }}-{{ j }}" 
+  name="option3{{ i }}-{{ j }}" 
+  [(ngModel)]="question.option3" 
+  class="form-control" 
+  required 
+  #option3="ngModel"
+/>
+
+<!-- Validation Message -->
+<div *ngIf="option3.invalid && option3.touched" class="text-danger">
+  <small *ngIf="option3.errors?.['required']">Option 3 is required.</small>
+</div>
+
+
+<label for="option4{{ i }}-{{ j }}" class="form-label">Option 4</label>
+<input 
+  id="option4{{ i }}-{{ j }}" 
+  name="option4{{ i }}-{{ j }}" 
+  [(ngModel)]="question.option4" 
+  class="form-control" 
+  required 
+  #option4="ngModel"
+/>
+
+<!-- Validation Message -->
+<div *ngIf="option4.invalid && option4.touched" class="text-danger">
+  <small *ngIf="option4.errors?.['required']">Option 4 is required.</small>
+</div>
+
+<label for="correctAnswer{{ i }}-{{ j }}" class="form-label">Correct Answer</label>
+<input 
+  id="correctAnswer{{ i }}-{{ j }}" 
+  name="correctAnswer{{ i }}-{{ j }}" 
+  [(ngModel)]="question.correctAnswer" 
+  class="form-control" 
+  required 
+  #correctAnswer="ngModel"
+/>
+
+<!-- Validation Message -->
+<div *ngIf="correctAnswer.invalid && correctAnswer.touched" class="text-danger">
+  <small *ngIf="correctAnswer.errors?.['required']">Correct Answer is required.</small>
+</div>
+
+
+<label for="weightage{{ i }}-{{ j }}" class="form-label">Weightage</label>
+<input 
+  id="weightage{{ i }}-{{ j }}" 
+  name="weightage{{ i }}-{{ j }}" 
+  [(ngModel)]="question.weightage" 
+  class="form-control" 
+  required 
+  type="number"
+  min="1" 
+  max="100" 
+  #weightage="ngModel"
+/>
+
+<!-- Validation Message -->
+<div *ngIf="weightage.invalid && weightage.touched" class="text-danger">
+  <small *ngIf="weightage.errors?.['required']">Weightage is required.</small>
+  <small *ngIf="weightage.errors?.['min'] || weightage.errors?.['max']">
+    Weightage must be between 1 and 100.
+  </small>
+</div>
+
+ 
+                    <button type="button" class="btn btn-danger mt-2" (click)="removeQuestion(i, j)">Remove Question</button>
+                </div>
+                <button type="button" class="btn btn-success mt-2" (click)="addQuestion(i)">Add Question</button>
+            </div>
+
+            <!-- Video Section -->
+            <div class="mt-3">
+                <h4 class="mb-3">Videos</h4>
+                <div *ngFor="let video of module.vedioRef; let j = index" class="mt-2">
+                    <label for="videoName{{ i }}-{{ j }}" class="form-label">Video Name</label>
+<input 
+  id="videoName{{ i }}-{{ j }}" 
+  name="videoName{{ i }}-{{ j }}" 
+  [(ngModel)]="video.vedioName" 
+  class="form-control" 
+  required 
+  pattern="^[A-Za-z][A-Za-z0-9!@#$%^&*(),.?\:{}| \\s]{4,}$" 
+  #videoName="ngModel"
+/>
+
+<!-- Validation Message -->
+<div *ngIf="videoName.invalid && videoName.touched" class="text-danger">
+  <small *ngIf="videoName.errors?.['required']">Video Name is required.</small>
+  <small *ngIf="videoName.errors?.['pattern']">
+    Video Name must start with a letter, be at least 5 characters long, and can contain numbers and special characters.
+  </small>
+</div>
+
+
+                    <label for="videoContent{{ i }}-{{ j }}" class="form-label">Video Content (URL)</label>
+                    <input id="videoContent{{ i }}-{{ j }}" name="videoContent{{ i }}-{{ j }}" [(ngModel)]="video.contentName" class="form-control" />
+                    
+            
+                    <div class="mb-3">
+                      <label class="form-label">Video File</label>
+                      <input type="file" class="form-control" (change)="handleVideoFile($event, i)" />
+                    </div>
+                    <!-- <div class="mb-3">
+                      <label class="form-label">Material File</label>
+                      <input type="file" class="form-control" (change)="handleMaterialFile($event, i)" />
+                    </div>
+            
+                    <div class="mb-3">
+                      <label class="form-label">Video File</label>
+                      <input type="file" class="form-control" (change)="handleVideoFile($event, i)" />
+                    </div> -->
+            
+            
+                    <button type="button" class="btn btn-danger mt-2" (click)="removeVideo(i, j)">Remove Video</button>
+                </div>
+                <button type="button" class="btn btn-success mt-2" (click)="addVideo(i)">Add Video</button>
+            </div>
+
+            <button type="button" class="btn btn-danger mt-2" (click)="removeModule(i)">Remove Module</button>
+        </div>
+        <button type="button" class="btn btn-success" (click)="addModule()">Add Module</button>
+    </div>
+
+    <!-- Level Section -->
+    <div class="mb-4">
+        <h3 class="mb-3">Levels</h3>
+        <div *ngFor="let level of course1.levelList; let i = index" class="border p-3 mb-3 rounded">
+            <label for="levelName{{ i }}" class="form-label">Level Name</label>
+<input 
+  id="levelName{{ i }}" 
+  name="levelName{{ i }}" 
+  [(ngModel)]="level.levelName" 
+  class="form-control" 
+  required 
+  pattern="^(?i)(Beginner|Intermediate|Professional)$" 
+  #levelName="ngModel"
+/>
+
+<!-- Validation Message -->
+<div *ngIf="levelName.invalid && levelName.touched" class="text-danger">
+  <small *ngIf="levelName.errors?.['required']">Level Name is required.</small>
+  <small *ngIf="levelName.errors?.['pattern']">
+    Level Name must be one of: Beginner, Intermediate, or Professional (case-insensitive).
+  </small>
+</div>
+
+
+            <button type="button" class="btn btn-danger mt-2" (click)="removeLevel(i)">Remove Level</button>
+        </div>
+        <button type="button" class="btn btn-success" (click)="addLevel()">Add Level</button>
+    </div>
+    
+    <!-- Category Section -->
+    <div class="mb-4">
+        <h3 class="mb-3">Category</h3>
+        <label for="categoryName" class="form-label">Category Name</label>
+<input 
+  id="categoryName" 
+  name="categoryName" 
+  [(ngModel)]="course1.category.categoryName" 
+  class="form-control" 
+  required 
+  pattern="^[A-Za-z][A-Za-z\s\W]{4,}$" 
+  #categoryName="ngModel"
+/>
+
+<!-- Validation Message -->
+<div *ngIf="categoryName.invalid && categoryName.touched" class="text-danger">
+  <small *ngIf="categoryName.errors?.['required']">Category Name is required.</small>
+  <small *ngIf="categoryName.errors?.['pattern']">
+    Category Name must start with a letter, have at least 5 characters, and can contain letters and symbols.
+  </small>
+</div>
+
+    </div>
+    <video width="640" height="360" controls>
+      <source [src]="videoUrl" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    
+
+    <button type="submit" class="btn btn-success" [disabled]="!courseForm.valid">Submit</button>
+</form>
+<button class="btn btn-primary" (click)="getInstructorUserId()"></button>

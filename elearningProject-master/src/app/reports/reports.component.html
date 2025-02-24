@@ -1,0 +1,44 @@
+<p>reports works!</p>
+<div class="container mt-4">
+    <h2>Employee Reports</h2>
+  
+    <div class="row">
+      <div class="col-md-4" *ngFor="let report of reports">
+        <div class="card mb-4">
+          <div class="card-body">
+            <!-- Access employee data -->
+            <p>{{ report.employeeRef.employeeName }}</p>
+            <h5 class="card-title">Employee: {{ report.employeeRef.employeeName }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Course: {{ report.courseRef.courseName }}</h6>
+  
+            <!-- Course Progress -->
+            <p class="card-text"><strong>Course Progress:</strong> {{ report.progress }}%</p>
+  
+            <!-- Quiz Score -->
+            <p class="card-text"><strong>Quiz Score:</strong> {{ report.quizScore }}%</p>
+  
+            <!-- Display Course Category -->
+            <p class="card-text"><strong>Category:</strong> {{ report.courseRef.category.categoryName }}</p>
+  
+            <!-- Display Employee Contact -->
+            <p class="card-text"><strong>Contact:</strong> {{ report.employeeRef.employeeContact }}</p>
+  
+            <!-- Progress Bar for Course Progress -->
+            <div class="progress mb-3">
+              <div class="progress-bar" role="progressbar" [style.width]="report.progress + '%'" aria-valuenow="report.progress" aria-valuemin="0" aria-valuemax="100">{{ report.progress }}%</div>
+            </div>
+  
+            <!-- Display Quiz Score Progress Bar -->
+            <div class="progress">
+              <div class="progress-bar bg-info" role="progressbar" [style.width]="report.quizScore + '%'" aria-valuenow="report.quizScore" aria-valuemin="0" aria-valuemax="100">{{ report.quizScore }}%</div>
+            </div>
+  
+            <!-- View more details or actions (optional) -->
+            <a href="#" class="btn btn-primary mt-3">View Report</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,103 @@
+/* Styling for the modal */
+/* .modal {
+    display: block; /* Ensure modal is visible when showAssignForm is true */
+    /* background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-dialog {
+    max-width: 500px;
+    margin: 100px auto;
+  }
+  
+  .modal-header {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .modal-footer {
+    text-align: right;
+  }
+  
+  .btn-info {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .close {
+    color: white;
+    font-size: 1.5rem;
+  } */ */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #343a40;
+    color: white;
+    padding-top: 20px;
+  }
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    display: block;
+    font-size: 18px;
+    transition: background-color 0.3s;
+  }
+  .sidebar a:hover {
+    background-color: #575757;
+  }
+  .sidebar button {
+    width: 100%;
+    padding: 15px 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  .sidebar button:hover {
+    background-color: #0056b3;
+  }
+  .main-content {
+    margin-left: 260px; /* Adds space to the left for the sidebar */
+    padding: 20px;
+  }
+  .table-bordered {
+    margin-top: 20px;
+  }
+  /* For the course cards and buttons */
+.course-list .card {
+    margin-bottom: 20px;
+  }
+  
+  .course-list .card-body {
+    text-align: center;
+  }
+  
+  .course-list button {
+    width: 100%;
+  }
+  
+  .modal .modal-body {
+    padding: 20px;
+  }
+  
+  .modal .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .modal button {
+    width: 100%;
+  }

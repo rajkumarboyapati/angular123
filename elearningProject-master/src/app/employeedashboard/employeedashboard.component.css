@@ -1,0 +1,116 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+  }
+
+  /* Sidebar Styling */
+  .sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding-top: 20px;
+  }
+
+  .sidebar a {
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    display: block;
+    font-size: 18px;
+  }
+
+  .sidebar a:hover {
+    background-color: #34495e;
+  }
+
+  .sidebar .dropdown-item {
+    background-color: #34495e;
+  }
+
+  .content {
+    margin-left: 250px;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .dropdown-toggle::after {
+    content: "";
+  }
+
+  .btn-apply {
+    margin-top: 15px;
+  }
+  .search-bar {
+margin-bottom: 20px;
+display: flex;
+margin-left: 200px;
+margin-top: 15px;
+/* justify-content: end;  */
+}
+
+.search-bar input {
+width: 700px; 
+max-width: 100%; 
+padding: 10px; 
+
+border: 1px solid #ccc; /* Border color */
+
+}
+
+.search-bar input::placeholder {
+color: #aaa;
+}
+
+  .dropdown-menu label {
+    cursor: pointer;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+  .nav-item{
+      margin-left: 30px;
+
+
+
+  }
+
+  body, html {
+    overflow-x: hidden; 
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Apply box-sizing border-box globally */
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Main content */
+  .container, .content, .sidebar {
+    max-width: 1200px; /* Adjust to desired width */
+    margin: 0 auto;
+    padding: 0 15px; /* Optional padding */
+  }
+  
+  /* Fix layout for smaller screens */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 100%;
+      padding: 15px;
+    }
+  
+    .sidebar {
+      display: none; /* Hide sidebar */
+    }
+  
+    .content {
+      width: 100%;
+    }
+  }

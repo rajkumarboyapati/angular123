@@ -1,0 +1,131 @@
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<!-- Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<div class="sidebar">
+    <h3 class="text-center text-white">Employee Dashboard</h3>
+  
+    <!-- Category Dropdown -->
+    <div class="dropdown">
+      <a class="dropdown-toggle ml-5" href="#" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
+      <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="category" id="fullstack" [(ngModel)]="selectedCategory" value="fullstack">
+          <label class="form-check-label" for="fullstack">Fullstack</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="category" id="cloud" [(ngModel)]="selectedCategory" value="cloud">
+          <label class="form-check-label" for="cloud">Cloud</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="category" id="aiml" [(ngModel)]="selectedCategory" value="aiml">
+          <label class="form-check-label" for="aiml">AI/ML</label>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Level Dropdown -->
+    <div class="dropdown">
+      <a class="dropdown-toggle ml-5" href="#" id="levelDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Levels</a>
+      <div class="dropdown-menu" aria-labelledby="levelDropdown">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="level" id="beginner" [(ngModel)]="selectedLevel" value="beginner">
+          <label class="form-check-label" for="beginner">Beginner</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="level" id="intermediate" [(ngModel)]="selectedLevel" value="intermediate">
+          <label class="form-check-label" for="intermediate">Intermediate</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="level" id="professional" [(ngModel)]="selectedLevel" value="professional">
+          <label class="form-check-label" for="professional">Professional</label>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Instructor Dropdown -->
+    <div class="dropdown">
+      <a class="dropdown-toggle ml-5" href="#" id="instructorDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Instructor</a>
+      <div class="dropdown-menu" aria-labelledby="instructorDropdown">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="instructor" id="raju" [(ngModel)]="selectedInstructor" value="Raju">
+          <label class="form-check-label" for="raju">Raju</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="instructor" id="gopi" [(ngModel)]="selectedInstructor" value="Gopi">
+          <label class="form-check-label" for="gopi">Gopi</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="instructor" id="pavan" [(ngModel)]="selectedInstructor" value="Pavan">
+          <label class="form-check-label" for="pavan">Pavan</label>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Apply Filter Button -->
+    <button class="btn btn-primary btn-apply ml-5" (click)="applyFilter()">Apply Filter</button>
+  </div>
+  
+  <!-- Main Content Area -->
+  <div class="content">
+    <nav class="navbar navbar-expand-lg" style="background-color: lavender;">
+      <a class="navbar-brand bg-light" href="#">Employee Dashboard</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <button type="button" class="btn btn-info text-white">Certificates</button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-info text-white">Assigned Courses</button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-info text-white">Progress</button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-danger text-white">Logout</button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" class="form-control" placeholder="Search by instructor name" id="searchCourse">
+    </div>
+  
+    <!-- Dashboard Content -->
+    <h2>Welcome to Your Dashboard</h2>
+    <p>Select filters from the sidebar to see your filtered data.</p>
+  
+    <!-- Display Courses -->
+    <div class="row" *ngIf="isVisible">
+      <div class="col-md-3 bg-light" *ngFor="let course of filteredCourses">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ course.courseName }}</h5>
+            <p class="card-text"></p>
+            <p><strong>Category:</strong> {{ course.category.categoryName }}</p>
+            <p><strong>Level:</strong> {{ course.levelList[0]?.levelName }}</p>
+            <p><strong>Instructor:</strong> {{ course.instructorRef[0]?.instructorName }}</p>
+            <div *ngIf="!course.enrolled">
+              <button class="btn btn-primary" (click)="enroll(course)">Enroll in Course</button>
+            </div>
+  
+            <div *ngIf="course.enrolled">
+              <button class="btn btn-success" (click)="startCourse(course)">Start Course</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

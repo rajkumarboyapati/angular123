@@ -1,0 +1,245 @@
+.container{
+    display: flex;
+    justify-content: flex-end;
+}
+.btn:hover{
+    border: 0cap;
+}
+h1, h3, pre {
+    margin-left: 0; 
+    padding-left: 0;
+}
+.k{
+    margin-top: 40px;
+}
+.btn {
+    transition: background-color 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: black; 
+    color: white; 
+  }
+  h1{
+      font-size: 3rem;
+      font-weight: bold;
+      margin-top:80px;
+      margin-right: 160px;
+  }
+  h3{
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+  }
+  .c{
+      margin-top: 150px;
+  }
+  p{
+      font-size: 1rem;
+      margin-bottom: 30px;
+      margin-left: 20px;
+  }
+  .btnn{
+      border-radius: 30%;
+      border: 2px solid black; 
+  }
+
+  /* General Body and Container Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+  }
+  
+  .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  h1, h2, h3, h4 {
+    font-weight: bold;
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    background-color: #77bce5;
+    padding: 15px;
+  }
+  
+  .navbar .navbar-brand {
+    font-weight: bold;
+  }
+  
+  .navbar button {
+    font-weight: bold;
+  }
+  
+  .navbar-collapse {
+    justify-content: flex-end;
+  }
+  
+  .navbar button:hover {
+    background-color: #56a1c0;
+  }
+  
+  /* Hero Section Styles */
+  .hero-section {
+    margin-top: 30px;
+  }
+  
+  .hero-section .col-md-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 150px;
+  }
+  
+  .hero-section h1 {
+    margin-left: 150px;
+    font-size: 2.5rem;
+  }
+  
+  .hero-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .hero-section p {
+    font-weight: light;
+  text-align: justify;
+  margin-left: 70px;  /* You can adjust this value to match your desired indentation */
+  margin-right: 20px; /* Optional, to make sure the text doesn't touch the edge on the right */
+  line-height: 1.6; 
+  }
+  
+  .hero-section button {
+    border-radius: 25px;
+    background-color: #17a2b8;
+    width: 200px;
+    color: white;
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  
+  .hero-section button:hover {
+    background-color: #138496;
+    
+  }
+  
+  .hero-section img {
+    width: 97%;
+    margin-left: 9%;
+  }
+  
+  /* Features Section */
+  .features-section {
+    background-color: #12102d36;
+    color: white;
+    padding: 60px 0;
+    margin-top: 50px
+  }
+  
+  .features-section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .features-section .col-md-4 {
+    text-align: center;
+  }
+  
+  .features-section i {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  .features-section h4 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .features-section p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+  
+  /* Course Promotion Section */
+  .course-promotion-section {
+    background-color: white;
+    padding: 50px 0;
+  }
+  
+  .course-promotion-section h2 {
+    margin-left: 18%;
+    line-height: 1.5;
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .course-promotion-section .btn-lg {
+    width: 20%;
+    border-radius: 25px;
+  }
+  
+  .course-promotion-section img {
+    width: 500px;
+    height: 236px;
+    margin-right: 100px;
+    position: relative;
+    float: right;
+  }
+  
+  /* About Section */
+  .about-section {
+    margin-top: 50px;
+  }
+  
+  .about-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .about-section p {
+    text-align: justify;
+    max-width: 80%;
+    margin: 0 auto;
+    font-size: 1rem;
+    word-wrap: break-word;
+    margin-bottom: 40px;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color: #12102d36;
+    color: black;
+    text-align: center;
+    padding: 5px;
+  }
+  
+  footer a {
+    color: black;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
+  footer p {
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+  
+  /* Button Styles */
+  .btnn {
+    background-color: #17a2b8;
+    color: white;
+    margin-left:50%;
+  }
+  
+  .btnn:hover {
+    background-color: #138496;
+  }
+  
